@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class MyVersion {
 	public static int numOfCars = 0;
-	public static int temp = 0;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -18,30 +17,29 @@ public class MyVersion {
 			
 		}
 		
-		
-	
 		sort(arrli);
-		System.out.print("Longest Train: "+temp);
+		System.out.print("Longest Train: "+ numOfCars);
 	}
 
 	
 	public static void sort(ArrayList<Integer> arr) {
 		ArrayList<Integer> newArrLi  = new ArrayList<Integer>(arr.size()); 
-		if(Check(arr)>temp) {
-			temp=Check(arr);
-		}
+		if(Check(arr)>numOfCars) {
+			numOfCars=Check(arr);
+		
 		for(int i=0;i<arr.size();i++) {
 			newArrLi.addAll(arr);
 			newArrLi.remove(i);
-
-		
-	    	if(newArrLi.size()>0) {
+			
+			if(newArrLi.size()>0) {
 				
-				System.out.println(newArrLi);
+				System.out.print(newArrLi);
 				sort(newArrLi);
 		    }
 			newArrLi.clear();
 		}
+		}
+		System.out.println();
 		
 		
 	}
