@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class MyVersion {
 	public static int numOfCars = 0;
+	public static int branchLevel = 0;
+	public static int temp =0;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -18,12 +20,15 @@ public class MyVersion {
 		}
 		
 		sort(arrli);
-		System.out.print("Longest Train: "+ numOfCars);
+		System.out.println("Longest Train: "+ numOfCars);
+		System.out.println("Branch Level: "+ branchLevel);
+			
 	}
 
 	
 	public static void sort(ArrayList<Integer> arr) {
 		ArrayList<Integer> newArrLi  = new ArrayList<Integer>(arr.size()); 
+		
 		if(Check(arr)>numOfCars) {
 			numOfCars=Check(arr);
 		
@@ -34,10 +39,18 @@ public class MyVersion {
 			if(newArrLi.size()>0) {
 				
 				System.out.print(newArrLi);
+				temp++;
 				sort(newArrLi);
+				
+				
 		    }
+			if(branchLevel<temp) {
+				branchLevel = temp;
+			}
 			newArrLi.clear();
+			temp = 0;
 		}
+		
 		}
 		System.out.println();
 		
